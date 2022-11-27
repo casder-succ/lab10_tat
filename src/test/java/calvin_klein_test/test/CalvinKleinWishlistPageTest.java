@@ -28,7 +28,7 @@ public class CalvinKleinWishlistPageTest {
     }
 
     @Test(description = "Test empty wishlist")
-    void testWishlist() {
+    void testEmptyWishlist() {
         boolean isEmptyViewDisplayed = new CalvinKleinWishlistPage(driver)
                 .openPage()
                 .acceptCookies()

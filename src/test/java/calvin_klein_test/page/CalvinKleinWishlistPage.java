@@ -7,16 +7,16 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-import java.util.List;
 
 public class CalvinKleinWishlistPage extends AbstractPage {
-    private final String WISHLIST_PAGE_URL = "https://www.calvinklein.co.uk/wishlist";
 
     public CalvinKleinWishlistPage(WebDriver driver) {
         super(driver);
     }
 
     public CalvinKleinWishlistPage openPage() {
+        String WISHLIST_PAGE_URL = "https://www.calvinklein.co.uk/wishlist";
+
         driver.get(WISHLIST_PAGE_URL);
 
         return this;

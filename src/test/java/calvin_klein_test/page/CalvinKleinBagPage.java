@@ -9,13 +9,13 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public class CalvinKleinBagPage extends AbstractPage {
-    private final String BAG_PAGE_URL = "https://www.calvinklein.co.uk/shopping-bag";
-
     public CalvinKleinBagPage(WebDriver driver) {
         super(driver);
     }
 
     public CalvinKleinBagPage openPage() {
+        String BAG_PAGE_URL = "https://www.calvinklein.co.uk/shopping-bag";
+
         driver.get(BAG_PAGE_URL);
 
         return this;
@@ -54,9 +54,11 @@ public class CalvinKleinBagPage extends AbstractPage {
         try {
             WebElement adsModal =(new WebDriverWait(driver, Duration.ofSeconds(WAIT_TIMEOUT))).until(ExpectedConditions.elementToBeClickable(adsModalLocator));
             adsModal.findElement(modalCloseButtonLocator).click();
-        } finally {
+        } catch (Exception e) {
             return this;
         }
+
+        return this;
     }
 
     public CalvinKleinBagPage reload() {
