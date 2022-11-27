@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.List;
 
 public class CalvinKleinWishlistPage extends AbstractPage {
     private final String WISHLIST_PAGE_URL = "https://www.calvinklein.co.uk/wishlist";
@@ -19,6 +20,15 @@ public class CalvinKleinWishlistPage extends AbstractPage {
         driver.get(WISHLIST_PAGE_URL);
 
         return this;
+    }
+
+    public boolean checkIsEmptyViewDisplayed() {
+        By emptyViewLocator = By.xpath("//span[text()='Looks like your wishlist is empty']");
+
+        WebElement emptyViewWrapper = (new WebDriverWait(driver, Duration.ofSeconds(WAIT_TIMEOUT)))
+                .until(ExpectedConditions.presenceOfElementLocated(emptyViewLocator));
+
+        return emptyViewWrapper.isDisplayed();
     }
 
     public CalvinKleinWishlistPage acceptCookies() {
@@ -53,12 +63,4 @@ public class CalvinKleinWishlistPage extends AbstractPage {
         return this;
     }
 
-    public boolean checkIsEmptyViewDisplayed() {
-        By emptyViewLocator = By.xpath("//span[text()='Looks like your wishlist is empty']");
-
-        WebElement emptyViewWrapper = (new WebDriverWait(driver, Duration.ofSeconds(WAIT_TIMEOUT)))
-                .until(ExpectedConditions.presenceOfElementLocated(emptyViewLocator));
-
-        return emptyViewWrapper.isDisplayed();
-    }
 }
